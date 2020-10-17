@@ -1,0 +1,58 @@
+<ion-app>
+  <ion-split-pane when="(min-width; 3000px)" contentId="principal">
+    <ion-menu side="start" menuId="primerMenu" contentId="principal">
+      <ion-header class="ion-no-border" type="md">
+        <ion-toolbar type="md">
+          <ion-title>
+            <span class="b-4">Meu</span>
+            <span class="b-8"> Clube Condor</span>
+          </ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content class="bg-blue">
+        <ion-grid fixed>
+          <ion-row class="ion-justify-content-center">
+            <ion-col size="6">
+              <!-- <img src="./assets/images/clube.png" alt="" /> -->
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+        <ion-list mode="ios">
+          <ion-menu-toggle autoHide="false">
+            <ion-item lines="none" class="white-text">
+              <ion-label class="b-6">Home</ion-label>
+              <ion-icon slot="end" name="chevron-forward"></ion-icon>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle autoHide="false" [routerLink]="['products']">
+            <ion-item lines="none" class="white-text">
+              <ion-label class="b-6">Productos</ion-label>
+              <ion-icon slot="end" name="chevron-forward"></ion-icon>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle autoHide="false">
+            <ion-item lines="none" class="white-text">
+              <ion-label class="b-6">Pedidos</ion-label>
+              <ion-icon slot="end" name="chevron-forward"></ion-icon>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle autoHide="false">
+            <ion-item lines="none" class="white-text">
+              <ion-label class="b-6">Ventas</ion-label>
+              <ion-icon slot="end" name="chevron-forward"></ion-icon>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+      <ion-footer>
+        <ion-toolbar color="danger">
+          <ion-button expand="block" fill="clear" color="light" mode="ios">
+            <ion-spinner name="lines-small" class="ion-padding-end" color="light"></ion-spinner>
+            Salir del Sistema
+          </ion-button>
+        </ion-toolbar>
+      </ion-footer>
+    </ion-menu>
+    <ion-router-outlet id="principal"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "marketplace-fc31c": {
+      "hosting": {
+        "app": [
+          "marketplace-fc31c"
+        ]
+      }
+    }
+  }
+}

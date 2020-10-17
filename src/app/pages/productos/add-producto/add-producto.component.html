@@ -1,0 +1,72 @@
+<ion-header mode="ios">
+  <ion-toolbar lines="none">
+    <ion-buttons slot="end">
+      <ion-button slot="icon-only" (click)="close()" expand="block" fill="clear" mode="ios" color="dark">
+        <ion-icon name="close-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col size="12">        
+        <p class="title"> Cree una producto para su <b>menú</b> </p>
+      </ion-col>
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" size-md="8" size-lg="5">
+        <form [formGroup]="formProduct">
+          <ion-item>
+            <ion-label position="floating">Nombre</ion-label>
+            <ion-input #input formControlName="nombre" autocorrect="true" autocapitalize="true"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Descripcion del Producto</ion-label>
+            <ion-textarea  formControlName="descripcion" autocorrect="true" autocapitalize="true"></ion-textarea>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Categoria</ion-label>
+            <ion-select placeholder="Select One" formControlName="categoria" multiple="true" cancelText="Nah" okText="Okay!">
+              <ion-select-option value="f">Female</ion-select-option>
+              <ion-select-option value="m">Male</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Precio Regular</ion-label>
+            <ion-input type="number" formControlName="precio_regular" inputmode="numeric"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Precio Ofertas</ion-label>
+            <ion-input type="number" formControlName="precio_oferta" inputmode="numeric"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="floating">Promoción</ion-label>
+            <ion-input formControlName="promocion" autocorrect="true" autocapitalize="true"></ion-input>
+          </ion-item>
+          <div class="foto" (click)="onPhoto()" *ngIf="photoService.photos.length === 0">
+            <p>Foto de Producto</p>
+          </div>
+          <div *ngFor="let photo of photoService.photos; index as position" class="preview">
+            <ion-img [src]="photo.webviewPath" class="image"></ion-img>
+            <p class="remove" (click)="onPhotoRemove()">Remove</p>
+          </div>
+          <!-- <ion-button (click)="onPhoto()" expand="full" fill="outline" color="primary" mode="ios" *ngIf="photoService.photos.length === 0">
+            Foto
+          </ion-button>
+          <ion-button (click)="onPhotoRemove()" expand="full" fill="outline" color="danger" mode="ios" *ngIf="photoService.photos.length > 0">
+            Remover Foto
+          </ion-button> -->
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-button (click)="onSubmit()" expand="block" fill="clear" color="danger" mode="ios">
+      <ion-spinner name="lines-small" class="ion-padding-end" color="dark" *ngIf="isLoading"></ion-spinner>
+      Guardar
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

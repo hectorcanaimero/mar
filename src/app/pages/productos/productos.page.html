@@ -1,0 +1,84 @@
+<app-headers titulo="Produtos"></app-headers>
+<ion-segment (ionChange)="segmentChanged($event)">
+  <ion-segment-button value="category">
+    <ion-label>Categorias</ion-label>
+  </ion-segment-button>
+  <ion-segment-button value="product">
+    <ion-label>Productos</ion-label>
+  </ion-segment-button>
+</ion-segment>
+<ion-content *ngIf="segment === 'product'">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-searchbar placeholder="Busqueda de Produtos" type="search" (ionChange)="onSearch($event)" [debounce]="250"></ion-searchbar>
+  <ion-grid fixed>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" size-md="6" size-lg="4" *ngFor="let card of [1,1,1,1,1,1,1,1,1,1,1,1]">
+        <ion-item-sliding>
+          <ion-item-options side="start">
+            <ion-item-option (click)="edit('item')">Editar</ion-item-option>
+            <ion-item-option color="danger" (click)="offers('item')">Ofertas</ion-item-option>
+          </ion-item-options>
+      
+          <ion-item>
+            <ion-label>Item Product</ion-label>
+          </ion-item>
+      
+          <ion-item-options side="end">
+            <ion-item-option (click)="delete('item')">Desabilitar</ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!-- Boton de Agregar -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="danger" (click)="onAddProducto()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+
+<ion-content *ngIf="segment === 'category'">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
+  <ion-searchbar placeholder="Busqueda Categorias" type="search" (ionChange)="onSearch($event)" [debounce]="250"></ion-searchbar>
+  <ion-grid fixed>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" size-md="6" size-lg="4" *ngFor="let card of [1,1,1,1,1,1,1,1,1,1,1,1]">
+        <ion-item-sliding>
+          <ion-item-options side="start">
+            <ion-item-option (click)="edit('item')">Editar</ion-item-option>
+            <ion-item-option color="danger" (click)="offers('item')">Ofertas</ion-item-option>
+          </ion-item-options>
+      
+          <ion-item>
+            <ion-label>Item Categoria</ion-label>
+          </ion-item>
+      
+          <ion-item-options side="end">
+            <ion-item-option (click)="delete('item')">Desabilitar</ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <!-- Boton de Agregar -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="primary" (click)="onAddCategoria()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
